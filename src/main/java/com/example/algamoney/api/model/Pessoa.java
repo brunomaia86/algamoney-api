@@ -15,7 +15,7 @@ public class Pessoa {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long codigo;
 	
 	@NotNull
 	@Size(min = 3, max = 20)
@@ -50,5 +50,12 @@ public class Pessoa {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
+	
+	public Long getCodigo() {
+		return codigo;
+	}
 
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
 }
