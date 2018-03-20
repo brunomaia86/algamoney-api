@@ -20,7 +20,7 @@ public class Lancamento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer codigo;
+	private Long codigo;
 	
 	private String descricao;
 	
@@ -35,7 +35,7 @@ public class Lancamento {
 	private String observacao;
 	
 	@Enumerated(EnumType.STRING)
-	private TipoLancamento tipoLancamento;
+	private TipoLancamento tipo;
 	
 	@ManyToOne
 	@JoinColumn(name = "codigo_categoria")
@@ -45,11 +45,11 @@ public class Lancamento {
 	@JoinColumn(name = "codigo_pessoa")
 	private Pessoa pessoa;
 
-	public Integer getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 
@@ -94,11 +94,11 @@ public class Lancamento {
 	}
 
 	public TipoLancamento getTipoLancamento() {
-		return tipoLancamento;
+		return tipo;
 	}
 
-	public void setTipoLancamento(TipoLancamento tipoLancamento) {
-		this.tipoLancamento = tipoLancamento;
+	public void setTipoLancamento(TipoLancamento tipo) {
+		this.tipo = tipo;
 	}
 
 	public Categoria getCategoria() {
