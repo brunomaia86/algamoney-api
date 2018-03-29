@@ -22,5 +22,7 @@ public class LancamentoService {
 		return lancamentoRepository.findOne(codigo);
 	}
 
-	
+	public Lancamento salvarLancamento(Lancamento lancamento) {
+		return lancamentoRepository.save(lancamento);
+	}
 }

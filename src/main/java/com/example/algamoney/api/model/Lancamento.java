@@ -21,26 +21,26 @@ public class Lancamento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
+
 	private String descricao;
-	
+
 	@Column(name = "data_vencimento")
 	private LocalDate dataVencimento;
-	
+
 	@Column(name = "data_pagamento")
 	private LocalDate dataPagamento;
-	
+
 	private BigDecimal valor;
-	
+
 	private String observacao;
-	
+
 	@Enumerated(EnumType.STRING)
 	private TipoLancamento tipo;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "codigo_categoria")
 	private Categoria categoria;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "codigo_pessoa")
 	private Pessoa pessoa;
@@ -93,14 +93,6 @@ public class Lancamento {
 		this.observacao = observacao;
 	}
 
-	public TipoLancamento getTipoLancamento() {
-		return tipo;
-	}
-
-	public void setTipoLancamento(TipoLancamento tipo) {
-		this.tipo = tipo;
-	}
-
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -115,6 +107,14 @@ public class Lancamento {
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
+	}
+
+	public TipoLancamento getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoLancamento tipo) {
+		this.tipo = tipo;
 	}
 
 	@Override
@@ -142,6 +142,4 @@ public class Lancamento {
 		return true;
 	}
 
-	
-	
 }
