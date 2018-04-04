@@ -81,5 +81,9 @@ public class Pessoa {
 			return false;
 		return true;
 	}
+
+	public boolean inativa() {
+		return !this.ativo;
+	}
 	
 }
