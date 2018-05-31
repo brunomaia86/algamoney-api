@@ -52,13 +52,18 @@
 			<version>42.2.1</version>
 			<scope>runtime</scope>
 		</dependency> -->
+		
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
 
 		<!-- mysql -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency> -->
 
 		<!-- FLAWAY -->
 		<dependency>
@@ -79,7 +84,7 @@
 			<artifactId>jackson-datatype-jsr310</artifactId>
 		</dependency>
 		
-		<dependency>
+		<dependency>jar
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.4</version>

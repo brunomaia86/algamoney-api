@@ -1,16 +1,38 @@
-CREATE TABLE lancamento (
-	codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(50) NOT NULL,
-	data_vencimento DATE NOT NULL,
-	data_pagamento DATE,
-	valor DECIMAL(10,2) NOT NULL,
-	observacao VARCHAR(100),
-	tipo VARCHAR(20) NOT NULL,
-	codigo_categoria BIGINT(20) NOT NULL,
-	codigo_pessoa BIGINT(20) NOT NULL,
-	FOREIGN KEY (codigo_categoria) REFERENCES categoria(codigo),
-	FOREIGN KEY (codigo_pessoa) REFERENCES pessoa(codigo)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE SEQUENCE public.lancamento_codigo_seq
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+ALTER TABLE public.lancamento_codigo_seq
+  OWNER TO postgres;
+
+
+CREATE TABLE public.lancamento
+(
+  codigo bigint NOT NULL DEFAULT nextval('lancamento_codigo_seq'::regclass),
+  data_pagamento date,
+  data_vencimento date NOT NULL,
+  descricao character varying(255) NOT NULL,
+  observacao character varying(255),
+  tipo character varying(255) NOT NULL,
+  valor numeric(19,2) NOT NULL,
+  codigo_categoria bigint NOT NULL,
+  codigo_pessoa bigint NOT NULL,
+  CONSTRAINT lancamento_pkey PRIMARY KEY (codigo),
+  CONSTRAINT fk3oktdfripre9vo4ocu87op55a FOREIGN KEY (codigo_categoria)
+      REFERENCES public.categoria (codigo) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT fk9pqx360616efx77k3w4j297yw FOREIGN KEY (codigo_pessoa)
+      REFERENCES public.pessoa (codigo) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.lancamento
+  OWNER TO postgres;
 
 INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Salário mensal', '2017-06-10', null, 6500.00, 'Distribuição de lucros', 'RECEITA', 1, 1);
 INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Bahamas', '2017-02-10', '2017-02-10', 100.32, null, 'DESPESA', 2, 2);
