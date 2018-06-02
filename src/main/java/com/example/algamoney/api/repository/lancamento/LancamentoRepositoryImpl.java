@@ -46,7 +46,7 @@ public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
 		
 		if(!StringUtils.isEmpty(lancamentoFilter.getDescricao())) {
 			predicates.add(builder.like(
-					builder.lower(root.get(Lancamento_.descricao)), "%" + lancamentoFilter.getDescricao().toLowerCase() + "%"));
+					builder.lower(root.get(Lancamento_.descricao /*ou apenas "descricao" (sem METAMODEL) */)), "%" + lancamentoFilter.getDescricao().toLowerCase() + "%"));
 		}
 		
 		if(lancamentoFilter.getDataVencimentoDe() != null) {
