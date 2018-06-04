@@ -10,6 +10,7 @@ import com.example.algamoney.api.model.Pessoa;
 import com.example.algamoney.api.repository.LancamentoRepository;
 import com.example.algamoney.api.repository.PessoaRepository;
 import com.example.algamoney.api.repository.filter.LancamentoFilter;
+import com.example.algamoney.api.repository.projection.ResumoLancamento;
 import com.example.algamoney.api.service.exception.PessoaInexistenteOuInativaException;
 
 @Service
@@ -39,5 +40,9 @@ public class LancamentoService {
 
 	public void remover(Long codigo) {
 		lancamentoRepository.delete(codigo);
+	}
+
+	public Page<ResumoLancamento> resumir(LancamentoFilter lancamentoFilter, Pageable pageable) {
+		return lancamentoRepository.resumir(lancamentoFilter, pageable);
 	}
 }
