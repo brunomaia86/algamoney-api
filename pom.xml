@@ -60,17 +60,17 @@
     		<artifactId>spring-security-jwt</artifactId>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-		</dependency>
+		</dependency> -->
 
 		<!-- mysql -->
-		<!-- <dependency>
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
-		</dependency> -->
+		</dependency>
 
 		<!-- FLAWAY -->
 		<dependency>
